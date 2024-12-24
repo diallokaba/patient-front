@@ -1,0 +1,18 @@
+<div class="container">
+    <!-- Barre de navigation -->
+    <mat-toolbar  class="navbar">
+      <img src="assets/images/dhag-logo.png" alt="Logo" class="logo" />
+      <button mat-button routerLink="patient" class="nav-button">Patient</button>
+      <button mat-button class="nav-button">Contact</button>
+    </mat-toolbar>
+
+
+    <div class="main-content-body">
+        <router-outlet/>
+    </div>
+
+    <!-- Pied de page -->
+    <mat-toolbar class="footer">
+        <span>© 2024 Digital Health Afrikgroup (DHAG)</span>
+    </mat-toolbar>
+  </div>

@@ -1,0 +1,48 @@
+<div class="container-details">
+  <div class="left">
+    <img style="height: 500px" src="assets/images/dhag-logo.png" alt="">
+  </div>
+  <div class="right">
+    <div style="display: flex; gap: 80px">
+      <i class="fa-solid fa-hospital-user fa-6x"></i>
+      <div>
+        <strong style="font-size: 1.5rem">{{patient.prenom + ' ' + patient.nom}}</strong>
+        <div style="display: flex; gap: 70px;">
+          <div>
+            <p style="margin: 20px 0;"><strong>Sexe</strong></p>
+            <p style="margin: 20px 0;"><strong>Date de Naissance</strong></p>
+            <p style="margin: 20px 0;"><strong>Poids</strong></p>
+            <p style="margin: 20px 0;"><strong>Taille</strong></p>
+          </div>
+          <div>
+            <p style="margin: 20px 0;">{{patient.sexe}}</p>
+            <p style="margin: 20px 0;">{{patient.dateNaissance | date: 'dd/MM/yyyy'}}</p>
+            <p style="margin: 20px 0;">{{patient.poids}} <strong>K</strong></p>
+            <p style="margin: 20px 0;">{{patient.taille}} <strong>M</strong></p>
+          </div>
+        </div>
+        <div *ngIf="patient.contacts && patient.contacts.length > 0">
+          <hr>
+          <p style="margin: 10px 0"><strong>Contacts</strong></p>
+          <hr>
+          <div style="display: flex; gap: 150px; " *ngFor="let c of patient.contacts">
+            <div>
+              <p style="margin: 20px 0"><strong>{{c?.type}}</strong></p>
+            </div>
+            <div>
+              <p style="margin: 20px 0">{{c?.valeur}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="btn-bottom" *ngIf="patient">
+      <button matTooltip="Supprimer patient" (click)="deletePatient(patient.id)">Supprimer&nbsp;&nbsp;<i class="fa-solid fa-trash"></i></button>
+      <button matTooltip="Modifier patient" (click)="editPatient(patient)">Modifier&nbsp;&nbsp;<i class="fa-solid fa-pen-nib"></i></button>
+      <button matTooltip="Retour sur la liste des patients" (click)="backToPatientList()"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Retour</button>
+    </div>
+  </div>
+</div>

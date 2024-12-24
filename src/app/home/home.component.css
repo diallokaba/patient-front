@@ -1,0 +1,42 @@
+.container {
+  padding: 20px;
+  height: 89.7vh;
+}
+
+.main-content-body{
+  height: 91.7%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-button {
+  font-size: 16px;
+  text-transform: none;
+  padding: 2px 15px;
+  cursor: pointer;
+}
+
+.footer {
+  height: 50px;
+  background: #0A1D3D;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.footer span{
+  font-size: 14px;
+  background-color: #0A1D3D; color: white;
+}
+
+
+.logo {
+  height: 50px;
+  background: none;
+}
+

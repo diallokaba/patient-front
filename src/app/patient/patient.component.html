@@ -1,0 +1,75 @@
+<div>
+  <div class="content-header">
+    <h4>Liste des patients</h4>
+    <button mat-icon-button class="add-button" aria-label="Add patient" (click)="openAddPatientModal()">
+      <span style="font-weight: bold; padding-right: 5px">Ajouter Patient</span>
+      <mat-icon style="background-color: transparent; font-weight: bold;">add</mat-icon>
+    </button>
+  </div>
+
+  <div class="search-container">
+    <mat-form-field class="search-field" appearance="outline">
+      <mat-label>Rechercher un patient</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Tapez pour rechercher">
+    </mat-form-field>
+  </div>
+
+  <!-- Table des patients -->
+  <mat-card class="mat-card-personalize">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z1" matSort>
+
+      <!-- Colonnes -->
+      <ng-container matColumnDef="nom">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{ patient.nom }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="prenom">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{ patient.prenom }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sexe">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sexe </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{ patient.sexe }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dateNaissance">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Date de naissance </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{ patient.dateNaissance | date:'dd/MM/yyyy' }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="poids">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Poids </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{ patient.poids }} kg </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="taille">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Taille </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{ patient.taille }} m </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let patient">
+          <button class="btn view" mat-icon-button (click)="viewDetails(patient.id)" matTooltip="Afficher les détails du patient">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn edit" mat-icon-button (click)="editPatient(patient)" matTooltip="Modifier ce patient">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="btn delete" mat-icon-button (click)="deletePatient(patient.id)" matTooltip="Supprimer ce patient">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Lignes et cellules -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <!-- Pagination -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+</div>

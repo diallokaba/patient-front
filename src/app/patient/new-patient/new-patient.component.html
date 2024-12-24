@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>{{ data ? 'Modifier le patient' : 'Ajouter un patient' }}</h2>
+
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()" class="form-patient">
+  <mat-form-field appearance="fill" class="lastname-style">
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="nom" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="firstname-style">
+    <mat-label>Prénom</mat-label>
+    <input matInput formControlName="prenom" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width" style="width: 100%;">
+    <mat-label>Date de naissance</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateNaissance" required />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div style="margin-bottom: 10px;">
+    <div style="margin-left: 10px; font-weight: bold; margin-bottom: 5px;">
+      <mat-label>Sexe</mat-label>
+    </div>
+
+    <mat-radio-group formControlName="sexe">
+      <mat-radio-button value="HOMME">Homme</mat-radio-button>
+      <mat-radio-button value="FEMME">Femme</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field appearance="fill" class="taille-style">
+    <mat-label>Poids</mat-label>
+    <input matInput type="number" formControlName="poids" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="poids-style">
+    <mat-label>Taille</mat-label>
+    <input matInput type="number" formControlName="taille" required />
+  </mat-form-field>
+
+  <!-- Contacts -->
+  <div formArrayName="contacts">
+    <h4 style="font-weight: bold; margin-left: 10px;">Contacts</h4>
+    <div *ngFor="let contact of contacts.controls; let i = index" [formGroupName]="i">
+      <mat-form-field appearance="fill" class="type-style">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="EMAIL">Email</mat-option>
+          <mat-option value="MOBILE">Mobile</mat-option>
+          <mat-option value="FIXE">Fixe</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="valeur-style">
+        <mat-label>Valeur</mat-label>
+        <input matInput formControlName="valeur" />
+      </mat-form-field>
+
+      <button mat-icon-button color="warn" (click)="removeContact(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+
+    <button class="add-contact" mat-button (click)="addContact()">Cliquer pour ajouter un contact</button>
+  </div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button mat-button mat-dialog-close class="btn-cancel">Annuler</button>
+    <button mat-button type="submit" [disabled]="patientForm.invalid" class="btn-add">
+      {{ data ? 'Mettre à jour' : 'Ajouter' }}
+    </button>
+
+    <!--<button mat-button type="submit" [disabled]="patientForm.invalid" class="btn-add">Ajouter</button>-->
+ </div>
+</form>

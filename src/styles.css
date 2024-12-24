@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+  background-color: #eeeeee;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.mat-card-personalize{
+  padding: 20px;
+}
+
+mat-header-cell, mat-cell {
+  text-align: center;
+}
+
+mat-header-row{
+  background-color: #0A1D3D!important;
+  color: white!important;
+  font-weight: bold!important;
+}
+
+.content-header button{
+  background-color: #0A1D3D;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.btn {
+  background: none!important;
+  border: none!important;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+  .btn mat-icon{
+    background: none!important;
+    border: none!important;
+
+  }
+
+ .view mat-icon{
+    color: #0069D9!important;
+  }
+
+  .edit mat-icon{
+    color: #E0A800!important;
+  }
+
+  .delete mat-icon{
+    color: #C82333!important;
+  }
+
